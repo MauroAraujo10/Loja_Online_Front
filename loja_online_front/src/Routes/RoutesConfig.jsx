@@ -2,8 +2,8 @@ import React from 'react';
 import { Switch , Route } from 'react-router-dom';
 import { Rotas } from './rotas_const';
 
-import Home from '../pages/Home';
-import Erro from '../pages/Erro';
+import Home from '../pages/Home/Home';
+import Erro from '../pages/Erro/Erro';
 
 import UsuarioCrate from '../pages/Usuarios/container/usuario.create';
 

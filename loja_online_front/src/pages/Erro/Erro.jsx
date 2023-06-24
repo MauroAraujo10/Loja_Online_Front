@@ -1,5 +1,5 @@
 import React from 'react';
-import { Rotas } from '../Routes/rotas_const';
+import { Rotas } from '../../Routes/rotas_const';
 import { Link } from "react-router-dom";
 
 export default function Erro() {
