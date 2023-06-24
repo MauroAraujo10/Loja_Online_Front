@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './global.css';
+//import "antd/dist/antd.css";
 
 import { ConfigProvider } from 'antd';
 import language from 'antd/lib/locale/pt_BR';
