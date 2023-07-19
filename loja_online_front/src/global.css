@@ -18,3 +18,86 @@ code {
 .t-center {
   text-align: center;
 }
+
+a {
+  text-decoration: none;
+}
+
+.login-container {
+  background-image: url('./assets/login/login-background-3.png');
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.login-form {
+  background-color: #FFF;
+  padding: 40px;
+  width: 30%;
+  border-radius: 10px;
+}
+
+.login-form input{
+  background-color: #EEE;
+}
+
+.login-form-title{
+  text-align: center;
+  font-size: 25px;
+}
+
+.login-form-icon{
+  background-color: #3b5998;
+  color: #FFF;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 50px;
+}
+
+.login-form-login-with{
+  width: 100%;
+  display: block;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: '#555';
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.btn-facebook{
+  background-color: #3b5998;
+  color: #FFF;
+  width: 140px;
+  height: 50px;
+}
+.btn-facebook :hover{
+  text-decoration: none;
+}
+
+.btn-google {
+  background-color: #DB4A39;
+  color: #FFF;
+  width: 140px;
+  height: 50px;
+}
+
+.t-right {
+  text-align: right;
+}
+
+.mt-10{
+  margin-top: 10px;
+}
+
+.mt-20{
+  margin-top: 20px;
+}
+
+.mr-10{
+  margin-right: 10px;
+}

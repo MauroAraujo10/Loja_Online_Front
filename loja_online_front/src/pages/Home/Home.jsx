@@ -1,42 +1,75 @@
-import React, { useState } from 'react';
-import { Row, Col } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { Row, Col, Card, Button } from 'antd';
+
+import ProdutosService from '../../services/Produtos/produto.service';
+import { Rotas } from '../../Routes/rotas_const';
 
 const Home = () => {
+    const [storage, setStorage] = useState({});
     const [produtos, setProdutos] = useState([]);
+    const history = useHistory();
+
+    useEffect(() => {
+        const storage = JSON.parse(localStorage.getItem("storage"));
+
+        async function getAllProdutos() {
+            const produtos = await ProdutosService.GetAll();
+
+            if (produtos)
+                setProdutos(produtos);
+        }
+
+        if (storage && storage.IsAuthenticated) {
+            setStorage(storage);
+        }
+
+        getAllProdutos();
+    }, []);
+
+    const handleMaisInformacoes = (idProduto) => {
+        history.push(`Produto/${idProduto}`);
+    }
 
     const teste = async (e) => {
         e.preventDefault();
-        const result = await fetch('https://localhost:7087/Produtos');
-        setProdutos(await result.json());
+        history.push(Rotas.Produtos_Create);
     }
 
     return (
         <h2 className="t-center">
             Bem vindo a Loja ONline
             <br />
-            <button onClick={(e) => teste(e)}>Mostrar todos os produtos</button>
+            {
+                storage.IsAuthenticated
+                    ? <button onClick={(e) => teste(e)}>Cadastrar novo produto</button>
+                    : <></>
+            }
             <hr />
 
-            {
-                produtos.map((produto) => {
-                    return (
-                        <Row gutter={10} >
-                            <Col md={8}>
-                                <img
-                                    style={{width: '100%', heigth: 'auto'}} 
-                                    src={produto.Imagem} alt="" />
+            <Row>
+                {
+                    produtos.map((produto) => {
+                        return (
+                            <Col md={6}>
+                                <Card title={produto.Nome} style={{ margin: '10px' }} key={produto.IdProduto}>
+                                    <img src={produto.Imagem} alt="img" style={{ width: '200px', height: '200px' }} />
+                                    <h1>R$ {produto.Preco}</h1>
+                                    <h5><b>Vendedor: </b>{produto.NomeVendedor}</h5>
+
+                                    <Button
+                                        style={{ background: '#006d75', color: '#FFF', }}
+                                        onClick={() => handleMaisInformacoes(produto.IdProduto)}
+                                    >
+                                        Mais informações
+                                    </Button>
+                                </Card>
                             </Col>
-                            <Col md={8}>
-                                <h2>{produto.Nome}</h2>
-                                <h4>Preço R$ {produto.Preco}</h4>
-                                <p>{produto.Descricao}</p>
-                                <h5><b>Vendedor: </b>{produto.NomeVendedor}</h5>
-                            </Col>
-                        </Row>
-                    )
-                })
-            }
-        </h2>
+                        )
+                    })
+                }
+            </Row>
+        </h2 >
     )
 }
 

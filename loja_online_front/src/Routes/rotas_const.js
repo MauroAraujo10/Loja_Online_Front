@@ -1,4 +1,8 @@
 export const Rotas = {
     Home: '/',
-    Usuario_Create: '/Usuario/cadastro'
+    Login: '/Login',
+    Usuario_Create: '/Usuario/cadastro',
+
+    Produtos_Create: '/Produtos/cadastro',
+    Produto_Info: '/Produto/:idProduto'
 };
